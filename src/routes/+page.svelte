@@ -7,8 +7,8 @@
 <div class="p-4 bg-zinc-800 flex-1 gap-4 text-white">
   <div class="flex-row items-end gap-4">
     <div>
-      <h1 class="text-xl">From You</h1>
-      <h2 class="opacity-50">Applicativo de notas</h2>
+      <h1 class="text-xl" style="font-family: 'Carter One';">From You</h1>
+      <h2 class="opacity-50 text-sm">Applicativo de notas</h2>
     </div>
   </div>
   <ul class="flex flex-row items-start gap-2 flex-wrap">
