@@ -1,15 +1,36 @@
-<form action="" id="add-note-form" class="border-2 border-white/50 rounded p-2">
+<script>
+  let title = "";
+  let description = "";
+</script>
+
+<form
+  action="/teste"
+  id="add-note-form"
+  class="border-2 border-white/50 rounded p-2"
+>
   <input
     type="text"
+    bind:value={title}
     placeholder="Título"
-    class="bg-transparent font-semibold"
+    class="focus-underline bg-transparent font-semibold"
   />
-  <textarea placeholder="descrição" class="bg-transparent min-h-[1.5rem]" />
+  <textarea
+    rows="1"
+    placeholder="descrição"
+    bind:value={description}
+    class="focus-underline bg-transparent min-h-[1.5rem]"
+  />
+  {#if title || description}
+    <input
+      type="submit"
+      value="salvar"
+      class="p-1 px-2 bg-green-600 rounded-lg mt-2 cursor-pointer"
+    />
+  {/if}
 </form>
 
 <style lang="postcss">
-  #add-note-form input,
-  #add-note-form textarea {
-    @apply outline-none focus:border-b;
+  .focus-underline {
+    @apply outline-none focus:border-b focus:mb-0 mb-[1px];
   }
 </style>
