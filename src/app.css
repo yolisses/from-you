@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 * {
-  @apply flex;
+  @apply flex flex-col;
+}
+
+body {
+  @apply min-h-screen bg-red-500 flex-1;
 }
 
 title,
