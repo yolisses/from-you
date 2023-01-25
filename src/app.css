@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply min-h-screen bg-red-500 flex-1;
+  @apply min-h-screen;
 }
 
 title,

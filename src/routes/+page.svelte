@@ -4,9 +4,11 @@
   export let data: PageData;
 </script>
 
-<div class="p-4 bg-zinc-800 flex-1">
-  <h1 class="text-xl text-white">From You</h1>
-  <h2 class="text-white opacity-50 mb-2">Applicativo de notas</h2>
+<div class="p-4 bg-zinc-800 flex-1 gap-4">
+  <div>
+    <h1 class="text-xl text-white">From You</h1>
+    <h2 class="text-white opacity-50">Applicativo de notas</h2>
+  </div>
   <ul class="flex flex-row gap-2 flex-wrap">
     {#each data.notes as post}
       <li class="bg-yellow-100 p-2 shadow-xl rounded">
