@@ -1,4 +1,3 @@
-import "../db"
 import type { Note } from "../types/note"
 import type { Actions } from "@sveltejs/kit"
 
