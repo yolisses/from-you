@@ -1,4 +1,6 @@
-import type { Note } from "../types/note";
+import "../db"
+import type { Note } from "../types/note"
+import type { Actions } from "@sveltejs/kit"
 
 export async function load() {
     const notes: Note[] = [
@@ -7,4 +9,15 @@ export async function load() {
     ]
 
     return { notes }
+}
+
+export const actions: Actions = {
+    async default({ request }) {
+        const data = await request.formData()
+        const note: Note = {
+            title: data.get('title'),
+            description: data.get('description'),
+        }
+        await note.save()
+    }
 }

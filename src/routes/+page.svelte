@@ -13,10 +13,10 @@
   </div>
   <ul class="flex flex-row items-start gap-2 flex-wrap">
     <AddNoteForm />
-    {#each data.notes as post}
+    {#each data.notes as note}
       <li class="bg-yellow-100 text-black p-2 shadow-xl rounded">
-        <h3 class="font-semibold text-lg">{post.title}</h3>
-        <div>{post.description}</div>
+        <h3 class="font-semibold text-lg">{note.title}</h3>
+        <div>{note.description}</div>
       </li>
     {/each}
   </ul>

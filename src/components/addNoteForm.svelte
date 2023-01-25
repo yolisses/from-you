@@ -4,18 +4,20 @@
 </script>
 
 <form
-  action="/teste"
+  method="POST"
   id="add-note-form"
   class="border-2 border-white/50 rounded p-2"
 >
   <input
     type="text"
+    name="title"
     bind:value={title}
     placeholder="Título"
     class="focus-underline bg-transparent font-semibold"
   />
   <textarea
     rows="1"
+    name="description"
     placeholder="descrição"
     bind:value={description}
     class="focus-underline bg-transparent min-h-[1.5rem]"
