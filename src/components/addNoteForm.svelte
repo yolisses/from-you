@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  let title = "quale";
+  let title = "";
   let description = "";
 </script>
 
