@@ -7,7 +7,7 @@
 <form
   use:enhance
   method="POST"
-  id="add-note-form"
+  action="?/add"
   class="border-2 border-gray/50 rounded w-full max-w-sm"
 >
   <div class="m-2">

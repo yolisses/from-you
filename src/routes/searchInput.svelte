@@ -1,11 +1,16 @@
 <script>
   import Fa from "svelte-fa/src/fa.svelte";
   import { faSearch } from "@fortawesome/free-solid-svg-icons";
+  import { enhance } from "$app/forms";
 </script>
 
-<form class="flex-row border-2 rounded-full items-stretch w-full max-w-sm">
+<form
+  action="/"
+  method="get"
+  class="flex-row border-2 rounded-full items-stretch w-full max-w-sm"
+>
   <input
-    required
+    name="q"
     type="text"
     placeholder="Pesquisar"
     class="flex-1 rounded-l-full px-2"

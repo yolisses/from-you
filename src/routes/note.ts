@@ -6,4 +6,13 @@ const noteSchema = new Schema({
     description: String
 })
 
+noteSchema.index(
+    { title: 'text', description: 'text' },
+    {
+        weights: { title: 2, description: 1 },
+        default_language: 'portuguese'
+    }
+)
+
 export const Note = model('note', noteSchema)
+Note.createIndexes()
