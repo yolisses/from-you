@@ -25,17 +25,19 @@
   });
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <li
+  tabindex="0"
   style="grid-row-end: span {height};"
-  class="bg-yellow-100 shadow-xl rounded relative group break-words"
+  class="bg-yellow-100 shadow-xl rounded relative group break-words cursor-pointer"
 >
-  <div class="content" bind:this={content}>
-    <NoteContent {note} />
-  </div>
-  <div class="hidden group-hover:block absolute bottom-0 right-0">
+  <div class="hidden group-focus:block absolute top-0 right-0">
     <div class="flex-row rounded text-white bg-black/50 shadow">
       <button class="p-2"><Fa icon={faPen} /></button>
       <button class="p-2"><Fa icon={faTrash} /></button>
     </div>
+  </div>
+  <div class="content" bind:this={content}>
+    <NoteContent {note} />
   </div>
 </li>
