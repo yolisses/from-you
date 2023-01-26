@@ -6,7 +6,7 @@
 <form
   method="POST"
   id="add-note-form"
-  class="border-2 border-white/50 rounded p-2"
+  class="notes-grid-item border-2 border-white/50 rounded p-2"
 >
   <input
     type="text"

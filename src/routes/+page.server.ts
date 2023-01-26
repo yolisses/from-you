@@ -2,7 +2,7 @@ import { Note } from "./note"
 import type { Actions } from "@sveltejs/kit"
 
 export async function load() {
-    const notes = await Note.find({}, { _id: false }).lean()
+    const notes = await Note.find({}, { _id: false }).sort('-_id').lean()
     return { notes }
 }
 
