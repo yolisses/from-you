@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import AddNoteForm from "./addNoteForm.svelte";
   import Masonry from "./noteList.svelte";
+  import type { PageData } from "./$types";
+  import AddNoteForm from "./noteAddForm.svelte";
   import SearchInput from "./searchInput.svelte";
   export let data: PageData;
 </script>
