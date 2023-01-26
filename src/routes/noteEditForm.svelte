@@ -4,16 +4,9 @@
   export let note: Note;
   let title = note.title;
   let description = note.description;
-  $: blocked = !(title || description);
 </script>
 
-<form
-  use:enhance
-  class="p-2"
-  method="POST"
-  action="?/edit"
-  on:submit={() => (blocked = true)}
->
+<form use:enhance class="p-2" method="POST" action="?/edit">
   <input type="hidden" name="id" value={note._id} />
   <input
     type="text"
@@ -29,14 +22,11 @@
     bind:value={description}
     class="focus-underline bg-transparent min-h-[1.5rem] placeholder:text-black/50"
   />
-  {#if !blocked}
-    <input
-      type="submit"
-      value="salvar"
-      disabled={blocked}
-      class="p-1 px-2 disabled:saturate-0 disabled:cursor-default bg-green-600 rounded mt-2 cursor-pointer text-white"
-    />
-  {/if}
+  <input
+    type="submit"
+    value="salvar"
+    class="p-1 px-2 disabled:saturate-0 disabled:cursor-default bg-green-600 rounded mt-2 cursor-pointer text-white"
+  />
 </form>
 
 <style lang="postcss">
