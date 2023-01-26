@@ -2,9 +2,9 @@
   import type { Note } from "../types/note";
   import { onMount } from "svelte";
 
+  export let note: Note;
   export let rowGap: number;
   export let rowHeight: number;
-  export let note: Note;
 
   let height = 4;
   let content: HTMLDivElement;
