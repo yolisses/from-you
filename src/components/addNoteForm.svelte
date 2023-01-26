@@ -28,8 +28,7 @@
       class="focus-underline bg-transparent min-h-[1.5rem] placeholder:text-gray-600"
     />
   </div>
-
-  {#if title || description}
+  {#if !blocked}
     <input
       type="submit"
       value="salvar"
