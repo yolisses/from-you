@@ -9,24 +9,15 @@
   let height = 4;
   let content: HTMLDivElement;
 
-  // Add the observer when component mounts and cleanup after
   onMount(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      // We're only watching one element
       const entry = entries.at(0);
       if (!entry) return;
-
-      //Get the block size
-      const target = entry.target as HTMLDivElement;
-      height = Math.ceil(
-        (entry.contentBoxSize[0].blockSize + rowGap) / (rowHeight + rowGap)
-      );
-      console.log(target.style);
+      const { blockSize } = entry.contentBoxSize[0];
+      height = Math.ceil((blockSize + rowGap) / (rowHeight + rowGap));
     });
 
     resizeObserver.observe(content);
-
-    // This callback cleans up the observer
     return () => resizeObserver.unobserve(content);
   });
 </script>
