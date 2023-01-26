@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"mongodb": "^4.13.0",
+		"mongoose": "^6.9.0",
 		"svelte-fa": "^3.0.3"
 	}
 }
