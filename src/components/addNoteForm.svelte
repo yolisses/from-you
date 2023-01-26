@@ -1,13 +1,17 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  let title = "";
-  let description = "";
+  let title: string;
+  let description: string;
+  $: showSave = !!(title || description);
 </script>
 
 <form
   use:enhance
   method="POST"
   action="?/add"
+  on:submit={() => {
+    showSave = false;
+  }}
   class="border-2 border-gray/50 rounded w-full max-w-sm"
 >
   <div class="m-2">
@@ -27,7 +31,7 @@
     />
   </div>
 
-  {#if title || description}
+  {#if showSave}
     <input
       type="submit"
       value="salvar"
