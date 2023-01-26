@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Note } from "../types/note";
   import { onMount } from "svelte";
+  import NoteContent from "./noteContent.svelte";
 
   export let note: Note;
   export let rowGap: number;
@@ -22,14 +23,11 @@
   });
 </script>
 
-<div
+<li
   style="grid-row-end: span {height};"
   class="bg-yellow-100 shadow-xl rounded"
 >
   <div class="content" bind:this={content}>
-    <li class="p-2">
-      <h3 class="font-semibold text-lg">{note.title || ""}</h3>
-      <div>{note.description || ""}</div>
-    </li>
+    <NoteContent {note} />
   </div>
-</div>
+</li>
