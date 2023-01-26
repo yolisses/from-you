@@ -6,14 +6,14 @@
   export let data: PageData;
 
   onMount(() => {
-    var colc = new Colcade(".notes-grid", {
+    new Colcade(".notes-grid", {
       columns: ".notes-grid-col",
       items: ".notes-grid-item",
     });
   });
 </script>
 
-<div class="p-4 bg-zinc-800 flex-1 gap-4 text-white">
+<div class="p-4 flex-1 gap-4">
   <div class="flex-row items-end gap-4">
     <div>
       <h1 class="text-xl" style="font-family: 'Carter One';">From You</h1>
