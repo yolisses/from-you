@@ -8,7 +8,7 @@
   use:enhance
   method="POST"
   id="add-note-form"
-  class="notes-grid-item border-2 border-gray/50 rounded p-2"
+  class="border-2 border-gray/50 rounded p-2 w-full max-w-sm"
 >
   <input
     type="text"
