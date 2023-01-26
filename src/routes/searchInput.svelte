@@ -1,7 +1,6 @@
 <script>
   import Fa from "svelte-fa/src/fa.svelte";
   import { faSearch } from "@fortawesome/free-solid-svg-icons";
-  import { enhance } from "$app/forms";
 </script>
 
 <form
@@ -13,7 +12,7 @@
     name="q"
     type="text"
     placeholder="Pesquisar"
-    class="flex-1 rounded-l-full px-2"
+    class="flex-1 rounded-l-full px-2 w-full"
   />
   <label
     class="items-center justify-center p-2 cursor-pointer hover:bg-gray-200 rounded-r-full"
