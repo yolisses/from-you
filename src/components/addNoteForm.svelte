@@ -34,7 +34,7 @@
       type="submit"
       value="salvar"
       disabled={blocked}
-      class="p-1 px-2 disabled:saturate-50 bg-green-600 rounded mt-2 cursor-pointer text-white"
+      class="p-1 px-2 disabled:saturate-0 disabled:cursor-default bg-green-600 rounded mt-2 cursor-pointer text-white"
     />
   {/if}
 </form>
