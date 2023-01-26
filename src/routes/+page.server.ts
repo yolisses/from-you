@@ -1,21 +1,22 @@
 import { Note } from "./note"
-
 import type { PageServerLoad } from './$types';
-
 import type { Actions } from "@sveltejs/kit"
+import type { Note as NoteInterface } from "../types/note";
 
 export const load: PageServerLoad = async ({ url }) => {
     const query = url.searchParams.get('q')
+    let notes: NoteInterface[]
 
     if (query) {
-        const notes = await Note.find(
+        notes = await Note.find(
             { $text: { $search: query } },
-            { _id: false, score: { $meta: 'textScore' } })
+            { _id: false })
             .sort({ 'score': { $meta: 'textScore' } }).lean()
-        return { notes }
+    }
+    else {
+        notes = await Note.find({}, { _id: false }).sort('-_id').lean()
     }
 
-    const notes = await Note.find({}, { _id: false }).sort('-_id').lean()
     return { notes }
 }
 
