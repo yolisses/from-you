@@ -1,9 +1,10 @@
 <script lang="ts">
-  import type { Note } from "../types/note";
   import { onMount } from "svelte";
-  import NoteContent from "./noteContent.svelte";
   import Fa from "svelte-fa/src/fa.svelte";
-  import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+  import type { Note } from "../types/note";
+  import NoteContent from "./noteContent.svelte";
+  import DeleteButton from "./deleteButton.svelte";
+  import { faPen } from "@fortawesome/free-solid-svg-icons";
 
   export let note: Note;
   export let rowGap: number;
@@ -31,10 +32,10 @@
   style="grid-row-end: span {height};"
   class="bg-yellow-100 shadow-xl rounded relative group break-words cursor-pointer"
 >
-  <div class="hidden group-focus:block absolute top-0 right-0">
+  <div class="hidden group-focus-within:block absolute top-0 right-0">
     <div class="flex-row rounded text-white bg-black/50 shadow">
       <button class="p-2"><Fa icon={faPen} /></button>
-      <button class="p-2"><Fa icon={faTrash} /></button>
+      <DeleteButton id={note._id} />
     </div>
   </div>
   <div class="content" bind:this={content}>
