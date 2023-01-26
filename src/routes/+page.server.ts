@@ -35,5 +35,14 @@ export const actions: Actions = {
         const data = await request.formData()
         const _id = new ObjectId(data.get('id') as string)
         await Note.deleteOne({ _id })
-    }
+    },
+
+    async edit({ request }) {
+        const data = await request.formData()
+        const note = await Note.findById(new ObjectId(data.get('id') as string))
+        if (!note) return
+        note.title = data.get('title') as string
+        note.description = data.get('description') as string
+        await note.save()
+    },
 }

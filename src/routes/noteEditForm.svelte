@@ -1,30 +1,33 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  let title: string;
-  let description: string;
+  import type { Note } from "../types/note";
+  export let note: Note;
+  let title = note.title;
+  let description = note.description;
   $: blocked = !(title || description);
 </script>
 
 <form
   use:enhance
+  class="p-2"
   method="POST"
-  action="?/add"
+  action="?/edit"
   on:submit={() => (blocked = true)}
-  class="border-2 border-gray/50 rounded w-full max-w-sm p-2"
 >
+  <input type="hidden" name="id" value={note._id} />
   <input
     type="text"
     name="title"
     bind:value={title}
     placeholder="Título"
-    class="focus-underline bg-transparent font-semibold placeholder:text-gray-600"
+    class="text-lg focus-underline bg-transparent font-semibold placeholder:text-black/50"
   />
   <textarea
     rows="1"
     name="description"
     placeholder="descrição"
     bind:value={description}
-    class="focus-underline bg-transparent min-h-[1.5rem] placeholder:text-gray-600"
+    class="focus-underline bg-transparent min-h-[1.5rem] placeholder:text-black/50"
   />
   {#if !blocked}
     <input
@@ -38,6 +41,6 @@
 
 <style lang="postcss">
   .focus-underline {
-    @apply outline-none focus:border-b-2 focus:mb-0 mb-[2px];
+    @apply outline-none border-black focus:border-b-2 focus:mb-0 mb-[2px];
   }
 </style>

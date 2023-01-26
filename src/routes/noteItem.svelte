@@ -5,8 +5,10 @@
   import NoteContent from "./noteContent.svelte";
   import DeleteButton from "./deleteButton.svelte";
   import { faPen } from "@fortawesome/free-solid-svg-icons";
+  import NoteEditForm from "./noteEditForm.svelte";
 
   export let note: Note;
+  export let edit = false;
   export let rowGap: number;
   export let rowHeight: number;
 
@@ -34,11 +36,17 @@
 >
   <div class="hidden group-focus-within:block absolute top-0 right-0">
     <div class="flex-row rounded text-white bg-black/50 shadow">
-      <button class="p-2"><Fa icon={faPen} /></button>
+      <button on:click={() => (edit = !edit)} class="p-2"
+        ><Fa icon={faPen} /></button
+      >
       <DeleteButton id={note._id} />
     </div>
   </div>
   <div class="content" bind:this={content}>
-    <NoteContent {note} />
+    {#if edit}
+      <NoteEditForm {note} />
+    {:else}
+      <NoteContent {note} />
+    {/if}
   </div>
 </li>
