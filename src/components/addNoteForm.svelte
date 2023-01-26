@@ -2,16 +2,14 @@
   import { enhance } from "$app/forms";
   let title: string;
   let description: string;
-  $: showSave = !!(title || description);
+  $: blocked = !(title || description);
 </script>
 
 <form
   use:enhance
   method="POST"
   action="?/add"
-  on:submit={() => {
-    showSave = false;
-  }}
+  on:submit={() => (blocked = true)}
   class="border-2 border-gray/50 rounded w-full max-w-sm"
 >
   <div class="m-2">
@@ -31,11 +29,12 @@
     />
   </div>
 
-  {#if showSave}
+  {#if title || description}
     <input
       type="submit"
       value="salvar"
-      class="p-1 px-2 bg-green-600 rounded mt-2 cursor-pointer text-white"
+      disabled={blocked}
+      class="p-1 px-2 disabled:saturate-50 bg-green-600 rounded mt-2 cursor-pointer text-white"
     />
   {/if}
 </form>
