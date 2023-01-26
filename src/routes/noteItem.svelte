@@ -27,7 +27,7 @@
 
 <li
   style="grid-row-end: span {height};"
-  class="bg-yellow-100 shadow-xl rounded relative group"
+  class="bg-yellow-100 shadow-xl rounded relative group break-words"
 >
   <div class="content" bind:this={content}>
     <NoteContent {note} />
