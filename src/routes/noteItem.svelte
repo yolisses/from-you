@@ -6,8 +6,8 @@
   export let rowHeight: number;
   export let note: Note;
 
-  let boxEl;
-  let height = 10;
+  let height = 4;
+  let content: HTMLDivElement;
 
   // Add the observer when component mounts and cleanup after
   onMount(() => {
@@ -24,10 +24,10 @@
       console.log(target.style);
     });
 
-    resizeObserver.observe(boxEl);
+    resizeObserver.observe(content);
 
     // This callback cleans up the observer
-    return () => resizeObserver.unobserve(boxEl);
+    return () => resizeObserver.unobserve(content);
   });
 </script>
 
@@ -35,7 +35,7 @@
   style="grid-row-end: span {height};"
   class="bg-yellow-100 shadow-xl rounded"
 >
-  <div class="content" bind:this={boxEl}>
+  <div class="content" bind:this={content}>
     <li class="p-2">
       <h3 class="font-semibold text-lg">{note.title || ""}</h3>
       <div>{note.description || ""}</div>
