@@ -10,20 +10,23 @@
   id="add-note-form"
   class="border-2 border-gray/50 rounded w-full max-w-sm"
 >
-  <input
-    type="text"
-    name="title"
-    bind:value={title}
-    placeholder="Título"
-    class="m-2 focus-underline bg-transparent font-semibold placeholder:text-gray-600"
-  />
-  <textarea
-    rows="1"
-    name="description"
-    placeholder="descrição"
-    bind:value={description}
-    class="mx-2 focus-underline bg-transparent min-h-[1.5rem] placeholder:text-gray-600"
-  />
+  <div class="m-2">
+    <input
+      type="text"
+      name="title"
+      bind:value={title}
+      placeholder="Título"
+      class="focus-underline bg-transparent font-semibold placeholder:text-gray-600"
+    />
+    <textarea
+      rows="1"
+      name="description"
+      placeholder="descrição"
+      bind:value={description}
+      class="focus-underline bg-transparent min-h-[1.5rem] placeholder:text-gray-600"
+    />
+  </div>
+
   {#if title || description}
     <input
       type="submit"
