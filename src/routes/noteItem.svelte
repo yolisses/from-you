@@ -34,7 +34,7 @@
   style="grid-row-end: span {height};"
   class="bg-yellow-100 shadow-xl rounded relative group break-words cursor-pointer overflow-hidden transition"
 >
-  <div class="hidden group-focus-within:block absolute top-0 right-0">
+  <div class="hidden group-hover:block absolute top-0 right-0">
     <div class="flex-row rounded text-white bg-black/50 shadow">
       <button on:click={() => (edit = !edit)} class="p-2"
         ><Fa icon={faPen} /></button
