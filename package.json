@@ -33,6 +33,7 @@
 		"imagesloaded": "^5.0.0",
 		"mongodb": "^4.13.0",
 		"mongoose": "^6.9.0",
+		"neode": "^0.4.8",
 		"svelte-fa": "^3.0.3"
 	}
 }
