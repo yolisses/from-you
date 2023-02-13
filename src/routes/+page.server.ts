@@ -5,6 +5,8 @@ import type { PageServerLoad } from './$types';
 import { createNote } from "../note/createNote";
 import { removeNote } from "../note/removeNote";
 import type { Note as NoteInterface } from "../note/note";
+import { signIn } from "../user/signIn";
+import { sessionSecondsDuration } from "../user/sessionSecondsDuration";
 
 export const load = (async ({ url }) => {
     const query = url.searchParams.get('q')
@@ -46,4 +48,12 @@ export const actions: Actions = {
         note.description = data.get('description') as string
         await note.save()
     },
+
+    async signIn({ request, cookies }) {
+        const data = await request.formData()
+        const signature = data.get('signature') as string
+        const address = data.get('address') as string
+        const sessionId = await signIn({ address, signature })
+        cookies.set("Authorization", sessionId, { maxAge: sessionSecondsDuration })
+    }
 }
