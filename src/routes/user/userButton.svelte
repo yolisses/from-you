@@ -29,7 +29,7 @@
       e.target.submit();
     } catch (err: any) {
       if (err.code === "ACTION_REJECTED")
-        error = "Confirme sua carteira Ethereum";
+        error = "Por favor, confirme sua carteira Ethereum";
       else {
         error = err.message;
       }
@@ -38,7 +38,7 @@
 
   onMount(() => {
     if (!window.ethereum) {
-      error = "Instale o MetaMask para se autenticar";
+      error = "Por favor, instale o MetaMask para se autenticar";
     }
   });
 </script>
