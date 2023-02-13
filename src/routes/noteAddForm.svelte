@@ -7,7 +7,7 @@
 
 <form
   use:enhance
-  method="POST"
+  method="post"
   action="?/add"
   on:submit={() => (blocked = true)}
   class="border-2 border-gray/50 rounded w-full max-w-sm p-2 mb-2 break-inside-avoid max-h-[50vh]"

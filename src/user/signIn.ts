@@ -7,10 +7,8 @@ interface Params {
     signature: string
 }
 export function signIn({ address, signature }: Params) {
-
     const signerAddress = verifyMessage(loginMessage, signature).toLowerCase()
     if (signerAddress !== address) {
         throw new Error("Wrong signature to provided address")
     }
-
 }

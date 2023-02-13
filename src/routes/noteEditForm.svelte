@@ -1,12 +1,12 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import type { Note } from "../types/note";
+  import type { Note } from "../note/note";
   export let note: Note;
   let title = note.title;
   let description = note.description;
 </script>
 
-<form use:enhance class="p-2" method="POST" action="?/edit">
+<form use:enhance class="p-2" method="post" action="?/edit">
   <input type="hidden" name="id" value={note._id} />
   <input
     type="text"
