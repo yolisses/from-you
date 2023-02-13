@@ -2,7 +2,9 @@
   import { ethers } from "ethers";
   import { onMount } from "svelte";
   import { loginMessage } from "../../user/loginMessage";
+  import type { PageData } from "./$types";
 
+  export let data: PageData;
   let error: string | undefined;
   let signature: string;
   let address: string;
@@ -42,6 +44,7 @@
 </script>
 
 <div>
+  {data.userId}
   <h2>Entrar</h2>
   {#if error}
     <div class="text-red-500">{error}</div>

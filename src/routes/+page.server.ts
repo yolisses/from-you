@@ -1,14 +1,12 @@
-import { Note } from "../note/noteModel"
 import { ObjectId } from "mongodb";
+import { Note } from "../note/noteModel"
 import type { Actions } from "@sveltejs/kit"
 import type { PageServerLoad } from './$types';
-import { NoteNode as NoteNode } from '../note/noteNode'
-import type { Note as NoteInterface } from "../note/note";
-import { neo4j } from "../db/neo4j";
 import { createNote } from "../note/createNote";
 import { removeNote } from "../note/removeNote";
+import type { Note as NoteInterface } from "../note/note";
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load = (async ({ url }) => {
     const query = url.searchParams.get('q')
     let notes: NoteInterface[]
 
@@ -23,7 +21,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
     notes.forEach(note => note._id = String(note._id))
     return { notes }
-}
+}) satisfies PageServerLoad
 
 export const actions: Actions = {
     async add({ request }) {

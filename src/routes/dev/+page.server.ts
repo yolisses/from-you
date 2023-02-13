@@ -2,6 +2,13 @@ import type { Actions } from "@sveltejs/kit"
 import { signIn } from "../../user/signIn"
 import '../../db/redis'
 import { sessionSecondsDuration } from "../../user/sessionSecondsDuration"
+import type { PageServerLoad } from "../$types";
+
+export const load = (({ locals }) => {
+    return {
+        userId: locals.userId
+    };
+}) satisfies PageServerLoad;
 
 export const actions: Actions = {
     async signIn({ request, cookies }) {
