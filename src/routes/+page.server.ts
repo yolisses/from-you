@@ -4,7 +4,7 @@ import type { Actions } from "@sveltejs/kit"
 import type { PageServerLoad } from './$types';
 import { NoteNode as NoteNode } from '../note/noteNode'
 import type { Note as NoteInterface } from "../note/note";
-import { neo4j } from "../nodes/neo4j";
+import { neo4j } from "../neo4j";
 import { createNote } from "../note/createNote";
 import { removeNote } from "../note/removeNote";
 

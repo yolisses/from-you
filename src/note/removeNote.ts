@@ -1,6 +1,6 @@
 import { Note } from "./noteModel"
 import { ObjectId } from "mongodb"
-import { neo4j } from "../nodes/neo4j"
+import { neo4j } from "../neo4j"
 
 export async function removeNote(id: string) {
     await Note.deleteOne({ _id: new ObjectId(id) })

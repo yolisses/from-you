@@ -1,5 +1,5 @@
 import { Note } from "./noteModel";
-import { neo4j } from "../nodes/neo4j";
+import { neo4j } from "../neo4j";
 import type { Note as NoteInterface } from "./note";
 
 
