@@ -6,6 +6,6 @@ export const actions: Actions = {
         const data = await request.formData()
         const signature = data.get('signature') as string
         const address = data.get('address') as string
-        signIn({ address, signature })
+        await signIn({ address, signature })
     }
 }
