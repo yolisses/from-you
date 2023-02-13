@@ -8,7 +8,7 @@ export const actions: Actions = {
         const signature = data.get('signature') as string
         const address = data.get('address') as string
 
-        const signerAddress = verifyMessage(loginMessage, signature)
+        const signerAddress = verifyMessage(loginMessage, signature).toLowerCase()
         if (signerAddress !== address) {
             throw new Error("Wrong signature to provided address")
         }
