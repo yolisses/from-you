@@ -9,6 +9,7 @@ export const UserNode: SchemaObject = {
     created: {
         target: 'Note',
         direction: 'out',
+        cascade: 'detach',
         type: 'relationship',
         relationship: 'CREATED',
     }

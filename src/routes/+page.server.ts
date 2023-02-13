@@ -28,10 +28,11 @@ export const actions: Actions = {
         } as NoteInterface)
     },
 
-    async remove({ request }) {
+    async remove({ request, locals }) {
         const data = await request.formData()
         const id = data.get('id') as string
-        await removeNote(id)
+        const userId = locals.userId as string
+        await removeNote({ id, userId })
     },
 
     async edit({ request }) {
