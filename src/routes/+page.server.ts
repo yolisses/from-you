@@ -9,26 +9,12 @@ import { signIn } from "../user/signIn";
 import { sessionSecondsDuration } from "../user/sessionSecondsDuration";
 import { logout } from "../user/logout";
 import { createSession } from "../user/createSession";
+import { getNotes } from "../note/getNotes";
 
 export const load = (async ({ url, locals }) => {
-    const query = url.searchParams.get('q')
-    let notes: NoteInterface[]
-    const userId = new ObjectId(locals.userId)
-
-    if (query) {
-        notes = await Note.find({ userId, $text: { $search: query }, })
-            .sort({
-                'score': { $meta: 'textScore' }
-            }).lean()
-    }
-    else {
-        notes = await Note.find({ userId }).sort('-_id').lean()
-    }
-
-    notes.forEach(note => {
-        note._id = String(note._id)
-        note.userId = String(note.userId)
-    })
+    const query = url.searchParams.get('q') as string
+    const userId = locals.userId as string
+    const notes = await getNotes({ userId, query })
     return { notes, logged: locals.logged }
 }) satisfies PageServerLoad
 
