@@ -1,6 +1,7 @@
 <script lang="ts">
-  import type { Note } from "../types/note";
-  import Resume from "./resume.svelte";
+  import type { Note } from "../../note/note";
+  import Resume from "../resume.svelte";
+
   export let note: Note;
 </script>
 

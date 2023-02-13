@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data: PageData;
-  import NoteList from "./noteList.svelte";
   import type { PageData } from "./$types";
+  import NoteList from "./note/noteList.svelte";
   import SearchInput from "./searchInput.svelte";
 </script>
 

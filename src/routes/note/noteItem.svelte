@@ -1,10 +1,10 @@
 <script script lang="ts">
-  import Fa from "svelte-fa/src/fa.svelte";
-  import type { Note } from "../note/note";
-  import NoteContent from "./noteContent.svelte";
-  import DeleteButton from "./deleteButton.svelte";
-  import NoteEditForm from "./noteEditForm.svelte";
   import { faPen } from "@fortawesome/free-solid-svg-icons";
+  import Fa from "svelte-fa/src/fa.svelte";
+  import type { Note } from "../../note/note";
+  import DeleteButton from "../deleteButton.svelte";
+  import NoteEditForm from "./noteEditForm.svelte";
+  import NoteContent from "./noteContent.svelte";
 
   export let note: Note;
   export let edit = false;

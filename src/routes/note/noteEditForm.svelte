@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import type { Note } from "../note/note";
+  import type { Note } from "../../note/note";
   export let note: Note;
   let title = note.title;
   let description = note.description;
