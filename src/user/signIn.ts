@@ -1,5 +1,5 @@
 import { verifyMessage } from "ethers"
-import { neo4j } from "../neo4j"
+import { neo4j } from "../db/neo4j"
 import { loginMessage } from "./loginMessage"
 import { User } from "./userModel"
 

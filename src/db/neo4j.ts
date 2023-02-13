@@ -1,9 +1,9 @@
-import "./env"
+import '../env'
 import Neode from 'neode';
-import { NoteNode } from './note/noteNode';
-import { UserNode } from "./user/userNode";
+import { UserNode } from "../user/userNode";
+import { NoteNode } from "../note/noteNode";
 
 export const neo4j = Neode.fromEnv().with({
     User: UserNode,
-    Note: NoteNode
+    Note: NoteNode,
 })
