@@ -1,20 +1,13 @@
 <script lang="ts">
-  import type { Note } from "../types/note";
+  import type { Note } from "../note/note";
   import NoteItem from "./noteItem.svelte";
+  import AddNoteForm from "./noteAddForm.svelte";
   export let notes: Note[];
 </script>
 
-<ul class="note-grid">
+<ul class="block grid-flow-row columns-xs grid-cols-5 gap-2">
+  <AddNoteForm />
   {#each notes as note (note)}
-    <NoteItem {note} rowGap={10} rowHeight={10} />
+    <NoteItem {note} />
   {/each}
 </ul>
-
-<style lang="postcss">
-  .note-grid {
-    display: grid;
-    grid-gap: 10px;
-    grid-auto-rows: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-</style>

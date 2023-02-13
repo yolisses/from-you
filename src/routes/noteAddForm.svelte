@@ -10,7 +10,7 @@
   method="POST"
   action="?/add"
   on:submit={() => (blocked = true)}
-  class="border-2 border-gray/50 rounded w-full max-w-sm p-2"
+  class="border-2 border-gray/50 rounded w-full max-w-sm p-2 mb-2 break-inside-avoid max-h-[50vh]"
 >
   <input
     type="text"
