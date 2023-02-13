@@ -1,5 +1,6 @@
 import type { Actions } from "@sveltejs/kit"
 import { signIn } from "../../user/signIn"
+import '../../db/redis'
 
 export const actions: Actions = {
     async signIn({ request }) {
