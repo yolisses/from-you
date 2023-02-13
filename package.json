@@ -30,6 +30,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"ethers": "^6.0.3",
 		"imagesloaded": "^5.0.0",
 		"mongodb": "^4.13.0",
 		"mongoose": "^6.9.0",
