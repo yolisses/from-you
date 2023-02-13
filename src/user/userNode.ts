@@ -5,5 +5,11 @@ export const UserNode: SchemaObject = {
         unique: true,
         primary: true,
         type: 'string',
+    },
+    created: {
+        target: 'Note',
+        direction: 'out',
+        type: 'relationship',
+        relationship: 'CREATED',
     }
 }

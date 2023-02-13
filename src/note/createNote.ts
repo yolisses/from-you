@@ -7,8 +7,10 @@ import { ObjectId } from "mongodb";
 export async function createNote({ title, description, userId }: NoteInterface) {
     const note = new Note({ title, description, userId: new ObjectId(userId), })
     await note.save()
-    await neo4j.create('Note', {
+    const noteNode = await neo4j.create('Note', {
         title: note.title,
         id: note._id.toString(),
     })
+    const user = await neo4j.find('User', userId)
+    await user.relateTo(noteNode, 'created')
 }
