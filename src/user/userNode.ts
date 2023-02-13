@@ -5,6 +5,5 @@ export const UserNode: SchemaObject = {
         unique: true,
         primary: true,
         type: 'string',
-    },
-    address: 'string'
+    }
 }
