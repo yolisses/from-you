@@ -4,7 +4,7 @@
 </script>
 
 <form method="post" action="?/logout">
-  <button class="flex-row gap-1 items-center">
+  <button class="flex-row gap-1 items-center p-2 rounded-lg hover:bg-black/10">
     <Fa icon={faDoorOpen} />
     Sair
   </button>

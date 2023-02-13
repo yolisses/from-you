@@ -41,17 +41,17 @@
   });
 </script>
 
-<div>
-  {#if error}
-    <div class="text-red-500">{error}</div>
-  {/if}
-  <form method="post" action="?/signIn" on:submit|preventDefault={handleSubmit}>
-    {#if signature}
-      <input type="hidden" name="signature" value={signature} />{/if}
-    {#if address} <input type="hidden" name="address" value={address} /> {/if}
-    <button class="flex-row items-center gap-1 rounded-lg hover:bg-black/5 p-2">
-      <img src="/metamask.svg" alt="MetaMask fox" width="24" />
-      Entrar com MetaMask</button
-    >
-  </form>
-</div>
+{#if error}
+  <div class="text-red-500">{error}</div>
+{/if}
+<form method="post" action="?/signIn" on:submit|preventDefault={handleSubmit}>
+  {#if signature}
+    <input type="hidden" name="signature" value={signature} />{/if}
+  {#if address} <input type="hidden" name="address" value={address} /> {/if}
+  <button
+    class="flex-row items-center gap-2 rounded-lg bg-black/10 hover:bg-black/20 p-2 text-lg"
+  >
+    <img src="/metamask.svg" alt="MetaMask fox" width="28" />
+    Entrar com MetaMask</button
+  >
+</form>
