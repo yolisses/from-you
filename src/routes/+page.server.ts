@@ -53,7 +53,9 @@ export const actions: Actions = {
 
         locals.logged = true
         locals.userId = userId
-        cookies.set("Authorization", sessionId, { maxAge: sessionSecondsDuration })
+        cookies.set("Authorization", sessionId, {
+            maxAge: sessionSecondsDuration, httpOnly: true
+        })
     },
 
     async logout({ cookies, locals }) {
