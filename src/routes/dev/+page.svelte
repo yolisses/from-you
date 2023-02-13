@@ -13,9 +13,13 @@
         return;
       }
       console.log(accounts[0]);
+
+      const signer = await provider.getSigner();
+      const secret = await signer.signMessage("From You login");
+      console.log(secret);
     } catch (err: any) {
       if (err.code === "ACTION_REJECTED")
-        error = "Por favor selecione uma carteira Etherium";
+        error = "Por favor confirme sua carteira Etherium";
       else {
         error = err.message;
       }
