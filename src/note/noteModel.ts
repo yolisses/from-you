@@ -1,4 +1,4 @@
-import '../db'
+import '../db/mongo'
 import { model, Schema } from 'mongoose'
 
 const noteSchema = new Schema({
