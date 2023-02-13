@@ -38,5 +38,8 @@
   {#if error}
     <div class="text-red-500">{error}</div>
   {/if}
-  <button on:click={signIn}>Entrar usando MetaMask</button>
+  <button on:click={signIn} class="flex-row items-center gap-2">
+    <img src="/metamask.svg" alt="MetaMask fox" width="32" />
+    Entrar usando MetaMask</button
+  >
 </div>
