@@ -14,7 +14,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <li
   tabindex="0"
-  class="bg-yellow-100 mb-2 w-full shadow-xl rounded relative group break-words cursor-pointer overflow-hidden transition"
+  class="bg-yellow-100 mb-2 w-full shadow-lg rounded relative group break-words cursor-pointer overflow-hidden transition"
 >
   <div class="hidden group-hover:block absolute top-0 right-0">
     <div class="flex-row rounded text-white bg-black/50 shadow">
