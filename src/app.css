@@ -12,6 +12,10 @@ body {
   @apply min-h-screen;
 }
 
+.active-scale:active * {
+  @apply scale-90 transition-transform duration-100 origin-center;
+}
+
 title,
 style,
 script {

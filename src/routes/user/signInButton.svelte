@@ -49,7 +49,7 @@
     <input type="hidden" name="signature" value={signature} />{/if}
   {#if address} <input type="hidden" name="address" value={address} /> {/if}
   <button
-    class="flex-row items-center gap-2 rounded-lg bg-black/10 hover:bg-black/20 p-2 text-lg"
+    class="flex-row items-center gap-2 rounded-lg bg-black/10 hover:bg-black/20 p-2 text-lg active-scale"
   >
     <img src="/metamask.svg" alt="MetaMask fox" width="28" />
     Entrar com MetaMask</button
