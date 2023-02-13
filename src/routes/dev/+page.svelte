@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { ethers } from "ethers";
 
-  let error: string;
+  let error: string | undefined;
 
   async function signIn() {
     try {
@@ -16,6 +16,8 @@
 
       const signer = await provider.getSigner();
       const secret = await signer.signMessage("From You login");
+      error = undefined;
+
       console.log(secret);
     } catch (err: any) {
       if (err.code === "ACTION_REJECTED")
