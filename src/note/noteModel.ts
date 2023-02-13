@@ -1,9 +1,11 @@
 import '../db/mongo'
 import { model, Schema } from 'mongoose'
+import { ObjectId } from 'mongodb'
 
 const noteSchema = new Schema({
     title: String,
-    description: String
+    description: String,
+    userId: { type: ObjectId, ref: 'User' }
 })
 
 noteSchema.index(

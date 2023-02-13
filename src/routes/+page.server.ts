@@ -13,24 +13,30 @@ import { createSession } from "../user/createSession";
 export const load = (async ({ url, locals }) => {
     const query = url.searchParams.get('q')
     let notes: NoteInterface[]
+    const userId = new ObjectId(locals.userId)
 
     if (query) {
-        notes = await Note.find(
-            { $text: { $search: query } })
-            .sort({ 'score': { $meta: 'textScore' } }).lean()
+        notes = await Note.find({ userId, $text: { $search: query }, })
+            .sort({
+                'score': { $meta: 'textScore' }
+            }).lean()
     }
     else {
-        notes = await Note.find({}).sort('-_id').lean()
+        notes = await Note.find({ userId }).sort('-_id').lean()
     }
 
-    notes.forEach(note => note._id = String(note._id))
+    notes.forEach(note => {
+        note._id = String(note._id)
+        note.userId = String(note.userId)
+    })
     return { notes, logged: locals.logged }
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-    async add({ request }) {
+    async add({ request, locals }) {
         const data = await request.formData()
         await createNote({
+            userId: locals.userId,
             title: data.get('title'),
             description: data.get('description'),
         } as NoteInterface)
