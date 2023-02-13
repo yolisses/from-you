@@ -1,5 +1,6 @@
 import { verifyMessage } from "ethers"
 import { neo4j } from "../db/neo4j"
+import { createSession } from "./createSession"
 import { loginMessage } from "./loginMessage"
 import { User } from "./userModel"
 
@@ -14,12 +15,14 @@ export async function signIn({ address, signature }: Params) {
         throw new Error("Wrong signature to provided address")
     }
 
-    const user = await User.findOne({ address })
+    let user = await User.findOne({ address })
     if (!user) {
-        const user = new User({ address })
+        user = new User({ address })
         await user.save()
         await neo4j.create('User', {
             address, id: user._id.toString(),
         })
     }
+
+    return await createSession(user._id.toString())
 }

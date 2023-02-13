@@ -1,0 +1,1 @@
+export const sessionSecondsDuration = 604800
