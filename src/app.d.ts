@@ -9,9 +9,10 @@ declare global {
 		}
 		// interface PageData {}
 		// interface Platform {}
-		interface Window {
-			ethereum: any;
-		}
+
+	}
+	interface Window {
+		ethereum?: any;
 	}
 }
 

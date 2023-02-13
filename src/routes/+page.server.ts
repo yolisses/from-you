@@ -8,7 +8,7 @@ import type { Note as NoteInterface } from "../note/note";
 import { signIn } from "../user/signIn";
 import { sessionSecondsDuration } from "../user/sessionSecondsDuration";
 
-export const load = (async ({ url }) => {
+export const load = (async ({ url, locals }) => {
     const query = url.searchParams.get('q')
     let notes: NoteInterface[]
 
@@ -22,7 +22,7 @@ export const load = (async ({ url }) => {
     }
 
     notes.forEach(note => note._id = String(note._id))
-    return { notes }
+    return { notes, logged: locals.logged }
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
