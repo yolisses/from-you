@@ -1,8 +1,7 @@
-import { verifyMessage } from "ethers"
-import { neo4j } from "../db/neo4j"
-import { createSession } from "./createSession"
-import { loginMessage } from "./loginMessage"
 import { User } from "./userModel"
+import { neo4j } from "../db/neo4j"
+import { verifyMessage } from "ethers"
+import { loginMessage } from "./loginMessage"
 
 
 interface Params {
@@ -24,5 +23,5 @@ export async function signIn({ address, signature }: Params) {
         })
     }
 
-    return await createSession(user._id.toString())
+    return user
 }

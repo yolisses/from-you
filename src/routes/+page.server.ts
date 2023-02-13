@@ -7,6 +7,8 @@ import { removeNote } from "../note/removeNote";
 import type { Note as NoteInterface } from "../note/note";
 import { signIn } from "../user/signIn";
 import { sessionSecondsDuration } from "../user/sessionSecondsDuration";
+import { logout } from "../user/logout";
+import { createSession } from "../user/createSession";
 
 export const load = (async ({ url, locals }) => {
     const query = url.searchParams.get('q')
@@ -49,11 +51,26 @@ export const actions: Actions = {
         await note.save()
     },
 
-    async signIn({ request, cookies }) {
+    async signIn({ request, cookies, locals }) {
         const data = await request.formData()
         const signature = data.get('signature') as string
         const address = data.get('address') as string
-        const sessionId = await signIn({ address, signature })
+        const user = await signIn({ address, signature })
+        const userId = user._id.toString()
+        const sessionId = await createSession(userId)
+
+        locals.logged = true
+        locals.userId = userId
         cookies.set("Authorization", sessionId, { maxAge: sessionSecondsDuration })
+    },
+
+    async logout({ cookies, locals }) {
+        const sessionId = cookies.get("Authorization")
+        if (!sessionId) return
+        await logout(sessionId)
+
+        delete locals.logged
+        delete locals.userId
+        cookies.delete("Authorization")
     }
 }
