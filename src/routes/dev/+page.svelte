@@ -1,10 +1,13 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { ethers } from "ethers";
+  import { onMount } from "svelte";
+  import { loginMessage } from "./loginMessage";
 
   let error: string | undefined;
+  let signature: string;
+  let address: string;
 
-  async function signIn() {
+  async function handleSubmit(e: SubmitEvent) {
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const accounts = await provider.send("eth_requestAccounts", []);
@@ -12,13 +15,16 @@
         error = "Nenhuma carteira Etherium selecionada";
         return;
       }
-      console.log(accounts[0]);
+      address = accounts[0];
 
       const signer = await provider.getSigner();
-      const secret = await signer.signMessage("From You login");
-      error = undefined;
+      signature = await signer.signMessage(loginMessage);
 
-      console.log(secret);
+      // dirt way to wait signature hidden input change
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      error = undefined;
+      e.target.submit();
     } catch (err: any) {
       if (err.code === "ACTION_REJECTED")
         error = "Por favor confirme sua carteira Etherium";
@@ -40,8 +46,13 @@
   {#if error}
     <div class="text-red-500">{error}</div>
   {/if}
-  <button on:click={signIn} class="flex-row items-center gap-2">
-    <img src="/metamask.svg" alt="MetaMask fox" width="32" />
-    Entrar usando MetaMask</button
-  >
+  <form method="post" action="?/signIn" on:submit|preventDefault={handleSubmit}>
+    {#if signature}
+      <input type="hidden" name="signature" value={signature} />{/if}
+    {#if address} <input type="hidden" name="address" value={address} /> {/if}
+    <button class="flex-row items-center gap-2">
+      <img src="/metamask.svg" alt="MetaMask fox" width="32" />
+      Entrar usando MetaMask</button
+    >
+  </form>
 </div>

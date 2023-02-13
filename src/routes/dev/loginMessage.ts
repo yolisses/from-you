@@ -1,0 +1,1 @@
+export const loginMessage = "From You login"
