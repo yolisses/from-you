@@ -1,8 +1,11 @@
-import { Note } from "./note"
-import type { PageServerLoad } from './$types';
-import type { Actions } from "@sveltejs/kit"
-import type { Note as NoteInterface } from "../types/note";
+import { Note } from "../note/noteModel"
 import { ObjectId } from "mongodb";
+import type { Actions } from "@sveltejs/kit"
+import type { PageServerLoad } from './$types';
+import { NoteNode as NoteNode } from '../note/noteNode'
+import type { Note as NoteInterface } from "../note/note";
+import { neo4j } from "../nodes/neo4j";
+import { createNote } from "../note/createNote";
 
 export const load: PageServerLoad = async ({ url }) => {
     const query = url.searchParams.get('q')
@@ -24,11 +27,10 @@ export const load: PageServerLoad = async ({ url }) => {
 export const actions: Actions = {
     async add({ request }) {
         const data = await request.formData()
-        const note = new Note({
+        await createNote({
             title: data.get('title'),
             description: data.get('description'),
-        })
-        await note.save()
+        } as NoteInterface)
     },
 
     async remove({ request }) {
