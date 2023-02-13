@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ethers } from "ethers";
   import { onMount } from "svelte";
-  import { loginMessage } from "./loginMessage";
+  import { loginMessage } from "../../user/loginMessage";
 
   let error: string | undefined;
   let signature: string;
