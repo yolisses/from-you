@@ -6,6 +6,7 @@ import { NoteNode as NoteNode } from '../note/noteNode'
 import type { Note as NoteInterface } from "../note/note";
 import { neo4j } from "../nodes/neo4j";
 import { createNote } from "../note/createNote";
+import { removeNote } from "../note/removeNote";
 
 export const load: PageServerLoad = async ({ url }) => {
     const query = url.searchParams.get('q')
@@ -35,8 +36,8 @@ export const actions: Actions = {
 
     async remove({ request }) {
         const data = await request.formData()
-        const _id = new ObjectId(data.get('id') as string)
-        await Note.deleteOne({ _id })
+        const id = data.get('id') as string
+        await removeNote(id)
     },
 
     async edit({ request }) {
