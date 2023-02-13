@@ -14,9 +14,12 @@ export async function signIn({ address, signature }: Params) {
         throw new Error("Wrong signature to provided address")
     }
 
-    const user = new User({ address })
-    await user.save()
-    await neo4j.create('User', {
-        address, id: user._id.toString(),
-    })
+    const user = await User.findOne({ address })
+    if (!user) {
+        const user = new User({ address })
+        await user.save()
+        await neo4j.create('User', {
+            address, id: user._id.toString(),
+        })
+    }
 }
